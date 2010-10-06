@@ -257,7 +257,7 @@ def parsePacket(packet):
 		write(locals(), 'cmd', 'cpuUsage')
 	elif cmd == 22:
 		cmd = 'direct_control'
-		playerNum = ord[data]
+		playerNum = ord(data)
 		playerName = players[playerNum] or ''
 		write(locals(), 'cmd', 'playerNum', 'playerName')
 	elif cmd == 23:
@@ -324,7 +324,7 @@ def parsePacket(packet):
 		write(locals(), 'cmd', 'playerNum', 'playerName', 'team', 'ready', 'x', 'y', 'z')
 	elif cmd == 38:
 		cmd = 'playerinfo'
-		playerNum, cpuUsage, ping = struct.unpack('<BfH', data) # ping is in number of frames
+		playerNum, cpuUsage, ping = struct.unpack('<BfI', data) # ping is in number of frames
 		playerName = players[playerNum] or ''
 		write(locals(), 'cmd', 'playerNum', 'playerName', 'cpuUsage', 'ping')
 	elif cmd == 39:
